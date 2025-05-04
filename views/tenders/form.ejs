@@ -1,27 +1,47 @@
-<%- include('../partials/header', { title: 'Page Title' }) %>
+<%- include('../partials/header', { title: 'Add New Tender' }) %>
 <%- include('../layout') %>
+
 <main>
-  <h1><%= title %></h1>
-  <form action="/tenders/add" method="POST">
-    <label for="name">Tender Name:</label>
-    <input type="text" id="name" name="name" required>
+  <h1 style="text-align: center;"><%= title %></h1>
 
-    <label for="institution">Institution:</label>
-    <input type="text" id="institution" name="institution" required>
+  <form action="/tenders/add" method="POST" style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea>
+      <label for="name">
+        Tender Name:
+        <input type="text" id="name" name="name" required style="width: 300px;">
+    </label>
 
-    <label for="startDate">Start Date:</label>
-    <input type="datetime-local" id="startDate" name="startDate" required>
+      <label for="institution">
+        Institution:
+        <input type="text" id="institution" name="institution" required style="width: 300px;">
+      </label>
 
-    <label for="endDate">End Date:</label>
-    <input type="datetime-local" id="endDate" name="endDate" required>
+      <div style="width: 100%; max-width: 400px; margin-bottom: 20px;">
+        <label for="description" style="display: block; margin-bottom: 5px;">
+          Description:
+        </label>
+        <textarea id="description" name="description" rows="4" required style="width: 100%;"></textarea>
+      </div>
 
-    <label for="maxBudget">Max Budget:</label>
-    <input type="number" id="maxBudget" name="maxBudget" required>
+      <label for="startDate">
+        Start Date:
+        <input type="datetime-local" id="startDate" name="startDate" required style="width: 300px;">
+      </label>
 
-    <button type="submit">Create Tender</button>
+      <label for="endDate">
+        End Date:
+        <input type="datetime-local" id="endDate" name="endDate" required style="width: 300px;">
+      </label>
+
+      <label for="maxBudget">
+        Max Budget:
+        <input type="number" id="maxBudget" name="maxBudget" required style="width: 300px;">
+      </label>
+
+      <button type="submit" style="padding: 10px;">Create Tender</button>
+    </div>
   </form>
 </main>
+
 <%- include('../partials/footer') %>

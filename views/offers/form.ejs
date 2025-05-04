@@ -1,19 +1,28 @@
-<%- include('../partials/header') %>
+<%- include('../partials/header', { title }) %>
 
-<h2>Create Offer for "<%= tender.name %>"</h2>
+<h2 style="text-align: center;">Create Offer for "<%= tender.name %>"</h2>
 
-<form action="/tenders/<%= tender.id %>/offers" method="POST">
-  <label for="bidderName">Your Name:</label>
-  <input type="text" name="bidderName" required>
+<form action="/tenders/<%= tender.id %>/offers" method="POST" style="max-width: 500px; margin: 20px auto;">
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <label for="bidderName">
+      Your Name:
+      <input type="text" id="bidderName" name="bidderName" required style="width: 100%; padding: 8px;">
+    </label>
 
-  <label for="amount">Offer Amount:</label>
-  <input type="number" name="amount" required>
+    <label for="amount">
+      Offer Amount:
+      <input type="number" id="amount" name="amount" required style="width: 100%; padding: 8px;">
+    </label>
 
-  <label for="message">Message:</label>
-  <textarea name="message" required></textarea>
+    <label for="message">
+      Message:
+      <textarea id="message" name="message" rows="4" required style="width: 100%; padding: 8px;"></textarea>
+    </label>
 
-  <button type="submit">Submit Offer</button>
+    <button type="submit" style="padding: 10px; background-color: #004466; color: white; border: none; cursor: pointer;">
+      Submit Offer
+    </button>
+  </div>
 </form>
-
 
 <%- include('../partials/footer') %>

@@ -93,8 +93,12 @@ exports.addForm = (req, res) => {
 exports.details = async (req, res) => {
   try {
     const tender = await Tender.findByPk(req.params.id, {
-      include: [{ model: Offer }]
+      include: [{
+        model: Offer
+      }],
+      order: [[{ model: Offer }, 'amount', 'DESC']]
     });
+    
 
     if (!tender) return res.status(404).send('Tender not found');
     
@@ -111,7 +115,13 @@ exports.details = async (req, res) => {
 exports.closeTender = async (req, res) => {
   try {
     const tenderId = req.params.id;
-    const tender = await Tender.findByPk(tenderId); // Ensure the model is correctly being referenced here
+    const tender = await Tender.findByPk(req.params.id, {
+      include: [{
+        model: Offer
+      }],
+      order: [[{ model: Offer }, 'amount', 'DESC']]
+    });
+    
 
     if (!tender) {
       return res.status(404).json({ message: 'Tender not found' });
