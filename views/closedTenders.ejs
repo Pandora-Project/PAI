@@ -1,0 +1,33 @@
+<!-- views/tenders/closed.ejs -->
+<%- include('../partials/header') %>
+
+<h1>Closed Tenders</h1>
+
+<% if (tenders && tenders.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Institution</th>
+        <th>Closed At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tenders.forEach(tender => { %>
+        <tr>
+          <td><%= tender.name %></td>
+          <td><%= tender.institution %></td>
+          <td>
+            <%= tender.closedAt
+                  ? new Date(tender.closedAt).toLocaleDateString('en-GB')
+                  : '–' %>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>No closed tenders found.</p>
+<% } %>
+
+<%- include('../partials/footer') %>

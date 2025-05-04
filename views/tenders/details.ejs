@@ -1,0 +1,30 @@
+<%- include('../partials/header', { title }) %>
+<%- include('../layout') %>
+
+<main>
+  <h1><%= title %></h1>
+
+  <p><strong>Name:</strong> <%= tender.name %></p>
+  <p><strong>Institution:</strong> <%= tender.institution %></p>
+  <p><strong>Description:</strong> <%= tender.description %></p>
+  <p><strong>Start Date:</strong> <%= new Date(tender.startDate).toLocaleString() %></p>
+  <p><strong>End Date:</strong> <%= new Date(tender.endDate).toLocaleString() %></p>
+  <p><strong>Max Budget:</strong> <%= tender.maxBudget %></p>
+
+  <h3>Offers:</h3>
+  <% if (tender.Offers && tender.Offers.length > 0) { %>
+    <ul>
+      <% tender.Offers.forEach(offer => { %>
+        <li>
+          <strong><%= offer.bidderName %></strong> offered <%= offer.amount %> – <%= offer.message %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No offers yet.</p>
+  <% } %>
+
+  <a href="/tenders/<%= tender.id %>/offers/new">Submit a new offer</a>
+</main>
+
+<%- include('../partials/footer') %>

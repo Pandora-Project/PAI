@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<h2>Create Offer for "<%= tender.name %>"</h2>
+
+<form action="/tenders/<%= tender.id %>/offers" method="POST">
+  <label for="bidderName">Your Name:</label>
+  <input type="text" name="bidderName" required>
+
+  <label for="amount">Offer Amount:</label>
+  <input type="number" name="amount" required>
+
+  <label for="message">Message:</label>
+  <textarea name="message" required></textarea>
+
+  <button type="submit">Submit Offer</button>
+</form>
+
+
+<%- include('../partials/footer') %>

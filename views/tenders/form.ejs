@@ -1,0 +1,27 @@
+<%- include('../partials/header', { title: 'Page Title' }) %>
+<%- include('../layout') %>
+<main>
+  <h1><%= title %></h1>
+  <form action="/tenders/add" method="POST">
+    <label for="name">Tender Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="institution">Institution:</label>
+    <input type="text" id="institution" name="institution" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="startDate">Start Date:</label>
+    <input type="datetime-local" id="startDate" name="startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="datetime-local" id="endDate" name="endDate" required>
+
+    <label for="maxBudget">Max Budget:</label>
+    <input type="number" id="maxBudget" name="maxBudget" required>
+
+    <button type="submit">Create Tender</button>
+  </form>
+</main>
+<%- include('../partials/footer') %>
